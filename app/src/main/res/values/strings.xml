@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">lab3</string>
+    <string-array name="year">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
