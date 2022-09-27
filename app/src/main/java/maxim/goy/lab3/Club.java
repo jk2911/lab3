@@ -13,6 +13,9 @@ public class Club {
     private int countPlayers;
     private ArrayList<String> tournament;
 
+    public Club() {
+    }
+
     public Club(String name, String town, Calendar date, String nameCoach, int capacityStadium, String nameStadium, int countPlayers, ArrayList<String> tournament) {
         this.name = name;
         this.town = town;

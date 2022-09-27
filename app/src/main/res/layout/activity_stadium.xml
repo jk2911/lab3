@@ -51,23 +51,24 @@
         android:layout_width="179dp"
         android:layout_height="52dp"
         android:text="Далее"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
-
-    <Button
-        android:id="@+id/back"
-        android:layout_width="179dp"
-        android:layout_height="52dp"
-        android:text="Назад"
-        android:onClick="backPage"
+        android:onClick="nextPage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintVertical_bias="0.917" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="179dp"
+        android:layout_height="52dp"
+        android:onClick="backPage"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
 </androidx.constraintlayout.widget.ConstraintLayout>
