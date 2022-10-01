@@ -3,11 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Asus/Desktop/PMC/lab3/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2595" />
         <entry key="..\:/Users/Asus/Desktop/PMC/lab3/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Asus/Desktop/PMC/lab3/app/src/main/res/layout/activity_stadium.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Asus/Desktop/PMC/lab3/app/src/main/res/layout/activity_tournament.xml" value="0.264" />
+        <entry key="..\:/Users/Asus/Desktop/PMC/lab3/app/src/main/res/layout/activity_tournament.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Asus/Desktop/PMC/lab3/app/src/main/res/layout/stadium.xml" value="0.25416666666666665" />
+        <entry key="..\:/bstu/lab3/app/src/main/res/layout/activity_tournament.xml" value="0.22" />
       </map>
     </option>
   </component>

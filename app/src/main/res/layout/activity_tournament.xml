@@ -20,21 +20,23 @@
 
     <CheckBox
         android:id="@+id/ChampionsLeague"
+        style="@style/CheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Лига Чемпионов"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintVertical_bias="0.115" />
 
     <CheckBox
         android:id="@+id/LaLiga"
         android:layout_width="151dp"
         android:layout_height="40dp"
         android:text="Ла Лига"
+        style="@style/CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
@@ -44,12 +46,13 @@
 
     <CheckBox
         android:id="@+id/CupSpain"
-        android:layout_width="151dp"
+        style="@style/CheckBox"
+        android:layout_width="300dp"
         android:layout_height="40dp"
         android:text="Кубок Испании"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.28" />
@@ -59,8 +62,7 @@
         android:layout_width="151dp"
         android:layout_height="40dp"
         android:text="МЛС"
-        android:textSize="25dp"
-
+        style="@style/CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
