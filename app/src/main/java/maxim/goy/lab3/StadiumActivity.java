@@ -47,7 +47,7 @@ public class StadiumActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, TournamentActivity.class);
         startActivity(intent);
     }
     public void nextPage(View v){

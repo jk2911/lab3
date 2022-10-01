@@ -21,20 +21,16 @@
     <CheckBox
         android:id="@+id/ChampionsLeague"
         style="@style/CheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Лига Чемпионов"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <CheckBox
         android:id="@+id/LaLiga"
-        android:layout_width="151dp"
-        android:layout_height="40dp"
         android:text="Ла Лига"
         style="@style/CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,20 +43,16 @@
     <CheckBox
         android:id="@+id/CupSpain"
         style="@style/CheckBox"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
         android:text="Кубок Испании"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.28" />
 
     <CheckBox
         android:id="@+id/MLS"
-        android:layout_width="151dp"
-        android:layout_height="40dp"
         android:text="МЛС"
         style="@style/CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,6 +61,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36" />
+
+    <CheckBox
+        android:id="@+id/EuropaLeague"
+        style="@style/CheckBox"
+        android:text="Лига Европы"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436" />
+
+    <CheckBox
+        android:id="@+id/Bundesliga"
+        style="@style/CheckBox"
+        android:text="Бундеслига"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516" />
+
+    <CheckBox
+        android:id="@+id/CupGerman"
+        style="@style/CheckBox"
+        android:text="Кубок Германии"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.589" />
+
+    <CheckBox
+        android:id="@+id/PremierLeague"
+        style="@style/CheckBox"
+        android:text="Премьер Лига"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.665" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="179dp"
+        android:layout_height="52dp"
+        android:text="Далее"
+        android:onClick="nextPage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="179dp"
+        android:layout_height="52dp"
+        android:onClick="backPage"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
