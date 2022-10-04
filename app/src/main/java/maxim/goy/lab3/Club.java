@@ -19,7 +19,7 @@ public class Club {
     public Club() {
     }
 
-    public Club(String name, String town, Calendar date, String nameCoach, int capacityStadium, String nameStadium, int countPlayers, ArrayList<String> tournament) {
+    public Club(String name, String town, Calendar date, String nameCoach, int capacityStadium, String nameStadium, int countPlayers) {
         this.name = name;
         this.town = town;
         this.date = date;
@@ -27,7 +27,7 @@ public class Club {
         this.capacityStadium = capacityStadium;
         this.nameStadium = nameStadium;
         this.countPlayers = countPlayers;
-        this.tournament = tournament;
+        this.tournament = new ArrayList<>();
     }
 
     public void addTournament(String str) {

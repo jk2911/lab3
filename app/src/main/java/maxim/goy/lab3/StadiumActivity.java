@@ -31,7 +31,7 @@ public class StadiumActivity extends AppCompatActivity {
     }
 
     public void backPage(View v) {
-        Gson gson = new Gson();
+        /*Gson gson = new Gson();
         ArrayList<String> toor = new ArrayList<>();
         toor.add("Champions League");
         toor.add("La Liga");
@@ -48,7 +48,7 @@ public class StadiumActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Intent intent = new Intent(this, TournamentActivity.class);
-        startActivity(intent);
+        startActivity(intent);*/
     }
     public void nextPage(View v){
 

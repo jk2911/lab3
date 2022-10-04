@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.04" />
 
     <CheckBox
-        android:id="@+id/ChampionsLeague"
+        android:id="@+id/championsLeague"
         style="@style/CheckBox"
         android:text="Лига Чемпионов"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.121" />
 
     <CheckBox
-        android:id="@+id/LaLiga"
+        android:id="@+id/laLiga"
         android:text="Ла Лига"
         style="@style/CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.202" />
 
     <CheckBox
-        android:id="@+id/CupSpain"
+        android:id="@+id/cupSpain"
         style="@style/CheckBox"
         android:text="Кубок Испании"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.28" />
 
     <CheckBox
-        android:id="@+id/MLS"
+        android:id="@+id/mls"
         android:text="МЛС"
         style="@style/CheckBox"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,7 +74,7 @@
         app:layout_constraintVertical_bias="0.436" />
 
     <CheckBox
-        android:id="@+id/Bundesliga"
+        android:id="@+id/bundesliga"
         style="@style/CheckBox"
         android:text="Бундеслига"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.516" />
 
     <CheckBox
-        android:id="@+id/CupGerman"
+        android:id="@+id/cupGermany"
         style="@style/CheckBox"
         android:text="Кубок Германии"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,7 +96,7 @@
         app:layout_constraintVertical_bias="0.589" />
 
     <CheckBox
-        android:id="@+id/PremierLeague"
+        android:id="@+id/premierLeague"
         style="@style/CheckBox"
         android:text="Премьер Лига"
         app:layout_constraintBottom_toBottomOf="parent"
