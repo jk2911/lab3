@@ -36,7 +36,7 @@
         android:id="@+id/nameStadium"
         android:layout_width="226dp"
         android:layout_height="40dp"
-        android:hint="Название клуба"
+        android:hint="Название стадиона"
         android:text=""
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,6 +45,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.204" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="226dp"
+        android:layout_height="23dp"
+        android:text="Название стадиона"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.308"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.289" />
+
+    <EditText
+        android:id="@+id/nameCoach"
+        android:layout_width="226dp"
+        android:layout_height="40dp"
+        android:hint="Название стадиона"
+        android:text=""
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.308"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="226dp"
+        android:layout_height="23dp"
+        android:text="Вместимость стадиона"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.308"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.416" />
+
+    <EditText
+        android:id="@+id/capacity"
+        android:layout_width="226dp"
+        android:layout_height="40dp"
+        android:hint="Вместимость"
+        android:text=""
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.308"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="226dp"
+        android:layout_height="23dp"
+        android:text="Количество игроков"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.308"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569" />
+
+    <EditText
+        android:id="@+id/countCoach"
+        android:layout_width="226dp"
+        android:layout_height="40dp"
+        android:hint="Название стадиона"
+        android:text=""
+        android:digits="0123456789"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.308"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.648" />
 
     <Button
         android:id="@+id/next"

@@ -1,9 +1,12 @@
 package maxim.goy.lab3;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Club {
+    private final String path = "club.json";
     private String name;
     private String town;
     private Calendar date;
@@ -30,6 +33,8 @@ public class Club {
     public void addTournament(String str) {
         tournament.add(str);
     }
+
+    public void deleteTournament(String str) { tournament.remove(str); }
 
     //region getters and setters
 
