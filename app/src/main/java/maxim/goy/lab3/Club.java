@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Club {
-    private final String path = "club.json";
+    public final String path = "club.json";
     private String name;
     private String town;
     private Calendar date;

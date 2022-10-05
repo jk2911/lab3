@@ -90,7 +90,7 @@
         android:id="@+id/capacity"
         android:layout_width="226dp"
         android:layout_height="40dp"
-        android:text=""
+        android:inputType="number"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

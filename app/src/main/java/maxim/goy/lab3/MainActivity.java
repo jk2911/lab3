@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StadiumActivity.class);
         intent.putExtra("name", nameClub.getText().toString());
         intent.putExtra("town", nameTown.getText().toString());
+        int c = calendar.get(Calendar.DATE);
         intent.putExtra("day", calendar.get(Calendar.DATE));
         intent.putExtra("month", calendar.get(Calendar.MONTH));
         intent.putExtra("year", calendar.get(Calendar.YEAR));
