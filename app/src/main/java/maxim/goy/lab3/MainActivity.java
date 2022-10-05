@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("day", calendar.get(Calendar.DATE));
         intent.putExtra("month", calendar.get(Calendar.MONTH));
         intent.putExtra("year", calendar.get(Calendar.YEAR));
+
         intent.putExtra("coach", this.intent.getStringExtra("coach"));
         intent.putExtra("stadium", this.intent.getStringExtra("stadium"));
         intent.putExtra("capacity", this.intent.getStringExtra("capacity"));
