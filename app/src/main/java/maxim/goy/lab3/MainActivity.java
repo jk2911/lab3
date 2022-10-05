@@ -2,38 +2,49 @@ package maxim.goy.lab3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
-    TextView dateCreate, nameClub;
-    Calendar calendar = Calendar.getInstance();
+    TextView dateCreate, nameClub, nameTown;
+    Calendar calendar;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.intent = getIntent();
+
         dateCreate = findViewById(R.id.dateCreate);
         nameClub = findViewById(R.id.nameClub);
+        nameTown = findViewById(R.id.nameTown);
 
+        nameClub.setText(intent.getStringExtra("name"));
+        nameTown.setText(intent.getStringExtra("town"));
+
+        int day = 0, month = 0, year = 0;
+
+        try {
+            day = Integer.parseInt(intent.getStringExtra("day"));
+            month = Integer.parseInt(intent.getStringExtra("month"));
+            year = Integer.parseInt(intent.getStringExtra("year"));
+        } catch (Exception e) {
+            calendar = Calendar.getInstance();
+        }
+
+        if (calendar == null) {
+            calendar = new GregorianCalendar(year, month - 1, day);
+        }
         setDateCreate();
         /*try {
             FileOutputStream fileOutputStream = openFileOutput("file.txt", MODE_PRIVATE);
@@ -65,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    @SuppressLint("SetTextI18n")
     public void setDateCreate() {
         dateCreate.setText(calendar.get(Calendar.DATE) + "." + calendar.get(Calendar.MONTH) + "."
                 + calendar.get(Calendar.YEAR));
@@ -72,7 +84,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void nextPage(View v) {
         Intent intent = new Intent(this, StadiumActivity.class);
-        intent.putExtra("nameClub", nameClub.getText().toString());
+        intent.putExtra("name", nameClub.getText().toString());
+        intent.putExtra("town", nameTown.getText().toString());
+        intent.putExtra("day", calendar.get(Calendar.DATE));
+        intent.putExtra("month", calendar.get(Calendar.MONTH));
+        intent.putExtra("year", calendar.get(Calendar.YEAR));
+        intent.putExtra("coach", this.intent.getStringExtra("coach"));
+        intent.putExtra("stadium", this.intent.getStringExtra("stadium"));
+        intent.putExtra("capacity", this.intent.getStringExtra("capacity"));
+        intent.putExtra("players", this.intent.getStringExtra("players"));
+        intent.putExtra("tournament", this.intent.getStringExtra("tournament"));
         startActivity(intent);
     }
 }

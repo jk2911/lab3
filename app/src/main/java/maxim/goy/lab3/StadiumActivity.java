@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,16 +18,23 @@ import java.util.GregorianCalendar;
 
 public class StadiumActivity extends AppCompatActivity {
     TextView nameClub;
-    String path = "club.json";
+    EditText nameStadium, nameCoach, capacity, countPlayers;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stadium);
+        intent = getIntent();
+
         nameClub = findViewById(R.id.nameClub);
 
-        Intent intent = getIntent();
-        String str = intent.getStringExtra("nameClub");
+        nameStadium=findViewById(R.id.nameStadium);
+        nameCoach=findViewById(R.id.nameCoach);
+        capacity=findViewById(R.id.capacity);
+        countPlayers=findViewById(R.id.countPlayers);
+
+        String str = intent.getStringExtra("name");
         nameClub.setText(str);
     }
 
@@ -50,7 +58,8 @@ public class StadiumActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TournamentActivity.class);
         startActivity(intent);*/
     }
-    public void nextPage(View v){
+
+    public void nextPage(View v) {
 
         Intent intent = new Intent(this, TournamentActivity.class);
         startActivity(intent);
