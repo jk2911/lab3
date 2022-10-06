@@ -17,27 +17,32 @@ import java.util.GregorianCalendar;
 public class MainActivity extends AppCompatActivity {
     TextView dateCreate, nameClub, nameTown;
     Calendar calendar;
-    Intent intent;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.intent = getIntent();
+        bundle = getIntent().getBundleExtra("club");
+        if (bundle == null) {
+            bundle = new Bundle();
+        }
+
 
         dateCreate = findViewById(R.id.dateCreate);
         nameClub = findViewById(R.id.nameClub);
         nameTown = findViewById(R.id.nameTown);
 
-        nameClub.setText(intent.getStringExtra("name"));
-        nameTown.setText(intent.getStringExtra("town"));
+        int day = 1, month = 2, year = 1950;
 
-        int day = 0, month = 0, year = 0;
+        nameClub.setText(bundle.getString("name", ""));
+        nameTown.setText(bundle.getString("town", ""));
+
 
         try {
-            day = Integer.parseInt(intent.getStringExtra("day"));
-            month = Integer.parseInt(intent.getStringExtra("month"));
-            year = Integer.parseInt(intent.getStringExtra("year"));
+            day = bundle.getInt("day", day);
+            month = bundle.getInt("month", month);
+            year = bundle.getInt("year", year);
         } catch (Exception e) {
             calendar = Calendar.getInstance();
         }
@@ -84,18 +89,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void nextPage(View v) {
         Intent intent = new Intent(this, StadiumActivity.class);
-        intent.putExtra("name", nameClub.getText().toString());
-        intent.putExtra("town", nameTown.getText().toString());
-        int c = calendar.get(Calendar.DATE);
-        intent.putExtra("day", calendar.get(Calendar.DATE));
-        intent.putExtra("month", calendar.get(Calendar.MONTH));
-        intent.putExtra("year", calendar.get(Calendar.YEAR));
+        bundle.putString("name", nameClub.getText().toString());
+        bundle.putString("town", nameTown.getText().toString());
+        bundle.putInt("day", calendar.get(Calendar.DATE));
+        bundle.putInt("month", calendar.get(Calendar.MONTH));
+        bundle.putInt("year", calendar.get(Calendar.YEAR));
 
-        intent.putExtra("coach", this.intent.getStringExtra("coach"));
+        intent.putExtra("club", bundle);
+
+        /*intent.putExtra("coach", this.intent.getStringExtra("coach"));
         intent.putExtra("stadium", this.intent.getStringExtra("stadium"));
         intent.putExtra("capacity", this.intent.getStringExtra("capacity"));
         intent.putExtra("players", this.intent.getStringExtra("players"));
-        intent.putExtra("tournament", this.intent.getStringExtra("tournament"));
+        intent.putExtra("tournament", this.intent.getStringExtra("tournament"));*/
         startActivity(intent);
     }
 }

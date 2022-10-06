@@ -1,6 +1,7 @@
 package maxim.goy.lab3;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,13 +21,13 @@ import java.util.GregorianCalendar;
 public class StadiumActivity extends AppCompatActivity implements SavedIntent {
     TextView nameClub;
     EditText nameStadium, nameCoach, capacity, countPlayers;
-    Intent intent;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stadium);
-        intent = getIntent();
+        bundle = getIntent().getBundleExtra("club");
 
         nameClub = findViewById(R.id.nameClub);
 
@@ -35,11 +36,15 @@ public class StadiumActivity extends AppCompatActivity implements SavedIntent {
         capacity = findViewById(R.id.capacity);
         countPlayers = findViewById(R.id.countPlayers);
 
-        nameClub.setText(intent.getStringExtra("name"));
-        nameStadium.setText(intent.getStringExtra("stadium"));
-        nameCoach.setText(intent.getStringExtra("coach"));
-        capacity.setText(intent.getStringExtra("capacity"));
-        countPlayers.setText(intent.getStringExtra("players"));
+        nameClub.setText(bundle.getString("name", ""));
+        nameStadium.setText(bundle.getString("stadium", ""));
+        nameCoach.setText(bundle.getString("coach", ""));
+
+        try {
+            capacity.setText(bundle.getInt("capacity") + "");
+            countPlayers.setText(bundle.getInt("players") + "");
+        } catch (Resources.NotFoundException notFoundException) {
+        }
     }
 
     public void backPage(View v) {
@@ -56,16 +61,16 @@ public class StadiumActivity extends AppCompatActivity implements SavedIntent {
 
     @Override
     public void saveInfoInIntent(Intent intent) {
-        intent.putExtra("name", nameClub.getText().toString());
-        intent.putExtra("town", this.intent.getStringExtra("town"));
-        intent.putExtra("day", this.intent.getStringExtra("day"));
-        intent.putExtra("month", this.intent.getStringExtra("month"));
-        intent.putExtra("year", this.intent.getStringExtra("year"));
-        intent.putExtra("tournament", this.intent.getStringExtra("tournament"));
+        bundle.putString("coach", nameCoach.getText().toString());
+        bundle.putString("stadium", nameStadium.getText().toString());
+        String capacity = this.capacity.getText().toString();
+        String countPlayers = this.countPlayers.getText().toString();
 
-        intent.putExtra("coach", nameCoach.getText().toString());
-        intent.putExtra("stadium", nameStadium.getText().toString());
-        intent.putExtra("capacity", capacity.getText().toString());
-        intent.putExtra("players", countPlayers.getText().toString());
+        if (!capacity.equals(""))
+            bundle.putInt("capacity", Integer.parseInt(capacity));
+
+        if (!countPlayers.equals(""))
+            bundle.putInt("players", Integer.parseInt(countPlayers));
+        intent.putExtra("club", bundle);
     }
 }

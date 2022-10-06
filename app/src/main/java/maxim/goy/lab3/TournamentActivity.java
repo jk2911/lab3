@@ -15,21 +15,18 @@ public class TournamentActivity extends AppCompatActivity implements SavedIntent
     CheckBox championsLeague, laLiga, cupSpain, mls, bundesliga,
             cupGermany, premierLeague, europaLeague;
     ArrayList<String> tournament;
-    Intent intent;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament);
-        intent = getIntent();
-        this.tournament = new ArrayList<>();
-
-        if (intent.getStringExtra("tournament") == null)
+        bundle = getIntent().getBundleExtra("club");
+        this.tournament = bundle.getStringArrayList("tournament");
+        if (tournament == null) {
+            tournament = new ArrayList<>();
             return;
-
-        StringTokenizer str = new StringTokenizer(intent.getStringExtra("tournament"), ",");
-        while (str.hasMoreElements())
-            this.tournament.add(str.nextToken());
+        }
 
         championsLeague = findViewById(R.id.championsLeague);
         laLiga = findViewById(R.id.laLiga);
@@ -38,7 +35,7 @@ public class TournamentActivity extends AppCompatActivity implements SavedIntent
         bundesliga = findViewById(R.id.bundesliga);
         cupGermany = findViewById(R.id.cupGermany);
         premierLeague = findViewById(R.id.premierLeague);
-        europaLeague=findViewById(R.id.europaLeague);
+        europaLeague = findViewById(R.id.europaLeague);
 
         CheckBox[] tournaments = {championsLeague, laLiga, cupSpain, mls,
                 bundesliga, cupGermany, premierLeague, europaLeague};
@@ -75,22 +72,7 @@ public class TournamentActivity extends AppCompatActivity implements SavedIntent
 
     @Override
     public void saveInfoInIntent(Intent intent) {
-        intent.putExtra("name", this.intent.getStringExtra("name"));
-        intent.putExtra("town", this.intent.getStringExtra("town"));
-        intent.putExtra("day", this.intent.getStringExtra("day"));
-        intent.putExtra("month", this.intent.getStringExtra("month"));
-        intent.putExtra("year", this.intent.getStringExtra("year"));
-        intent.putExtra("coach", this.intent.getStringExtra("coach"));
-        intent.putExtra("stadium", this.intent.getStringExtra("stadium"));
-        intent.putExtra("capacity", this.intent.getStringExtra("capacity"));
-        intent.putExtra("players", this.intent.getStringExtra("players"));
-
-        String tournament = new String();
-        for (String str : this.tournament) {
-            tournament += str + ",";
-        }
-        if (tournament.length() > 1)
-            tournament = tournament.substring(0, tournament.length() - 1);
-        intent.putExtra("tournament", tournament);
+        bundle.putStringArrayList("tournament", tournament);
+        intent.putExtra("club", bundle);
     }
 }

@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,56 +19,74 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
-public class LoadSaveActivity extends AppCompatActivity implements SavedIntent {
-    Intent intent;
+public class LoadSaveActivity extends AppCompatActivity {
+    private final String path = "club.json";
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_save);
-        intent = getIntent();
+        bundle = getIntent().getBundleExtra("club");
     }
 
     public void save(View v) {
-        String name = intent.getStringExtra("name");
-        String town = intent.getStringExtra("name");
+        String name = bundle.getString("name", "");
+        String town = bundle.getString("town", "");
         Calendar date = new GregorianCalendar(
-                intent.getIntExtra("year", 1900),
-                intent.getIntExtra("month", 0),
-                intent.getIntExtra("day", 1)
+                bundle.getInt("year", 1900),
+                bundle.getInt("month", 0),
+                bundle.getInt("day", 1)
         );
-        String coach = intent.getStringExtra("coach");
-        int capacity = intent.getIntExtra("capacity", 0);
-        String stadium = intent.getStringExtra("stadium");
-        int players = intent.getIntExtra("players", 0);
-        StringTokenizer tournaments = new StringTokenizer(intent.getStringExtra("tournament"),
-                ",");
-        ArrayList<String> tournamentsList = new ArrayList<>(tournaments.countTokens());
-        while (tournaments.hasMoreElements())
-            tournamentsList.add(tournaments.nextToken());
+        String coach = bundle.getString("coach", "");
+        int capacity = bundle.getInt("capacity", 0);
+
+        String stadium = bundle.getString("stadium", "");
+        int players = bundle.getInt("players", 0);
+
+        ArrayList<String> tournamentsList = bundle.getStringArrayList("tournament");
         Club club = new Club(
                 name, town, date, coach, capacity, stadium, players
         );
+        club.setTournament(tournamentsList);
         try {
-            FileOutputStream fileOutputStream = openFileOutput(club.path, MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput(path, MODE_PRIVATE);
             Gson gson = new Gson();
             fileOutputStream.write(gson.toJson(club).getBytes());
-            Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Сохранено", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
-            Toast.makeText(this, "Не удалось сохранить", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Не удалось сохранить", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void load(View v) {
+        try {
+            FileInputStream fileInputStream = openFileInput(path);
+            byte[] info = new byte[fileInputStream.available()];
+            fileInputStream.read(info);
+            Gson gson = new Gson();
+            Club club = gson.fromJson(new String(info), Club.class);
 
+            bundle.putString("name", club.getName());
+            bundle.putString("town", club.getTown());
+            bundle.putInt("day", club.getDate().get(Calendar.DATE));
+            bundle.putInt("month", club.getDate().get(Calendar.MONTH));
+            bundle.putInt("year", club.getDate().get(Calendar.YEAR));
+            bundle.putString("coach", club.getNameCoach());
+            bundle.putString("stadium", club.getNameStadium());
+            bundle.putInt("capacity", club.getCapacityStadium());
+            bundle.putInt("players", club.getCountPlayers());
+            bundle.putStringArrayList("tournament", club.getTournament());
+
+            Toast.makeText(this, "Загружено", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            Toast.makeText(this, "Не удалось загрузить", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void backPage(View v) {
-
-    }
-
-    @Override
-    public void saveInfoInIntent(Intent intent) {
-
+        Intent intent = new Intent(this, TournamentActivity.class);
+        intent.putExtra("club", bundle);
+        startActivity(intent);
     }
 }
