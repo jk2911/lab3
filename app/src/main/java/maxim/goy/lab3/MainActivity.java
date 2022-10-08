@@ -51,18 +51,16 @@ public class MainActivity extends AppCompatActivity {
             calendar = new GregorianCalendar(year, month - 1, day);
         }
         setDateCreate();
-        /*try {
-            FileOutputStream fileOutputStream = openFileOutput("file.txt", MODE_PRIVATE);
-            fileOutputStream.write("fuck you".getBytes());
-            fileOutputStream.close();
-            FileInputStream fileInputStream = openFileInput("file.txt");
-            byte[] mess = new byte[fileInputStream.available()];
-            fileInputStream.read(mess);
-            String str = new String(mess);
-            dateCreate.setText(str);
-        } catch (IOException e) {
-            Log.d("MainActivity", e.getMessage());
-        }*/
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     public void setDate(View v) {

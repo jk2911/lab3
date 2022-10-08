@@ -30,6 +30,16 @@ public class LoadSaveActivity extends AppCompatActivity {
         bundle = getIntent().getBundleExtra("club");
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
     public void save(View v) {
         String name = bundle.getString("name", "");
         String town = bundle.getString("town", "");

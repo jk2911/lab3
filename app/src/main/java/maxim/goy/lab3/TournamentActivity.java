@@ -49,6 +49,16 @@ public class TournamentActivity extends AppCompatActivity implements SavedIntent
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
 
     public void nextPage(View v) {
         Intent intent = new Intent(this, LoadSaveActivity.class);

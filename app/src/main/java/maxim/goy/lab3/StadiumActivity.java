@@ -47,6 +47,16 @@ public class StadiumActivity extends AppCompatActivity implements SavedIntent {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
     public void backPage(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         saveInfoInIntent(intent);
