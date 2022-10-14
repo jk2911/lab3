@@ -15,7 +15,28 @@ public class Club {
     private int countPlayers;
     private ArrayList<String> tournament;
 
+    private String phone;
+    private String email;
+    private String socMedia;
+    private String image;
+
     public Club() {
+    }
+
+    public Club(String name, String town, Calendar date, String nameCoach, int capacityStadium,
+                String nameStadium, int countPlayers, ArrayList<String> tournament, String phone, String email, String socMedia, String image) {
+        this.name = name;
+        this.town = town;
+        this.date = date;
+        this.nameCoach = nameCoach;
+        this.capacityStadium = capacityStadium;
+        this.nameStadium = nameStadium;
+        this.countPlayers = countPlayers;
+        this.tournament = tournament;
+        this.phone = phone;
+        this.email = email;
+        this.socMedia = socMedia;
+        this.image = image;
     }
 
     public Club(String name, String town, Calendar date, String nameCoach, int capacityStadium, String nameStadium, int countPlayers) {
@@ -39,6 +60,38 @@ public class Club {
         this.nameStadium = nameStadium;
         this.countPlayers = countPlayers;
         this.tournament = tournament;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSocMedia() {
+        return socMedia;
+    }
+
+    public void setSocMedia(String socMedia) {
+        this.socMedia = socMedia;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void addTournament(String str) {

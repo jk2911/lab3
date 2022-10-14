@@ -6,12 +6,13 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class UserDataActivity extends AppCompatActivity {
-    EditText phone, email;
+    EditText phone, email, socMedia;
     Bundle bundle;
 
     @Override
@@ -32,6 +33,7 @@ public class UserDataActivity extends AppCompatActivity {
 
     public void backPage(View v) {
         Intent intent = new Intent(this, TournamentActivity.class);
+        intent.putExtra("club", bundle);
         startActivity(intent);
     }
 
@@ -40,6 +42,11 @@ public class UserDataActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+        startActivity(intent);
+    }
+
+    public void image(View v) {
+        Intent intent = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
         startActivity(intent);
     }
 

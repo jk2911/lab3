@@ -23,7 +23,7 @@ import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
 public class LoadSaveActivity extends AppCompatActivity {
-    TextView name, town, date, stadium, capacity, coach, countPlayers;
+    TextView name, town, date, stadium, capacity, coach, countPlayers, phone, socMedia, email;
     LinearLayout tournaments;
     private final String path = "club.json";
     Bundle bundle;
@@ -44,6 +44,11 @@ public class LoadSaveActivity extends AppCompatActivity {
         coach = findViewById(R.id.coach);
         countPlayers = findViewById(R.id.countPlayers);
         tournaments = findViewById(R.id.tournaments);
+
+        phone = findViewById(R.id.phone);
+        socMedia = findViewById(R.id.socMedia);
+        email = findViewById(R.id.email);
+
 
         club = new Club(bundle.getString("name", ""),
                 bundle.getString("town", ""),
