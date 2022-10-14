@@ -2,6 +2,7 @@ package maxim.goy.lab3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ public class LoadSaveActivity extends AppCompatActivity {
     Bundle bundle;
     Club club;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +55,7 @@ public class LoadSaveActivity extends AppCompatActivity {
                 bundle.getInt("players", 0),
                 bundle.getStringArrayList("tournament"));
 
-        name.setText(club.getName());
-        town.setText(club.getTown());
-        date.setText(club.getDate().toString());
-        stadium.setText(club.getNameStadium());
-        capacity.setText(club.getCapacityStadium());
-        coach.setText(club.getNameCoach());
-        countPlayers.setText(club.getCountPlayers());
+        OutputClubOnScreen();
     }
 
     @Override
@@ -89,7 +85,7 @@ public class LoadSaveActivity extends AppCompatActivity {
             byte[] info = new byte[fileInputStream.available()];
             fileInputStream.read(info);
             Gson gson = new Gson();
-            Club club = gson.fromJson(new String(info), Club.class);
+            club = gson.fromJson(new String(info), Club.class);
 
             bundle.putString("name", club.getName());
             bundle.putString("town", club.getTown());
@@ -102,6 +98,8 @@ public class LoadSaveActivity extends AppCompatActivity {
             bundle.putInt("players", club.getCountPlayers());
             bundle.putStringArrayList("tournament", club.getTournament());
 
+            OutputClubOnScreen();
+
             Toast.makeText(this, "Загружено", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             Toast.makeText(this, "Не удалось загрузить", Toast.LENGTH_SHORT).show();
@@ -109,12 +107,36 @@ public class LoadSaveActivity extends AppCompatActivity {
     }
 
     public void backPage(View v) {
+        Intent intent = new Intent(this, UserDataActivity.class);
+        intent.putExtra("club", bundle);
+        startActivity(intent);
+    }
+
+    public void onMainActivity(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("club", bundle);
+        startActivity(intent);
+    }
+
+    public void onStadiumActivity(View v) {
+        Intent intent = new Intent(this, StadiumActivity.class);
+        intent.putExtra("club", bundle);
+        startActivity(intent);
+    }
+
+    public void onTournamentActivity(View v) {
         Intent intent = new Intent(this, TournamentActivity.class);
         intent.putExtra("club", bundle);
         startActivity(intent);
     }
 
-    public void onMain(View v) {
-        Toast.makeText(this, "hfhfhf", Toast.LENGTH_LONG).show();
+    public void OutputClubOnScreen() {
+        name.setText(club.getName());
+        town.setText(club.getTown());
+        date.setText(club.toStringDate());
+        stadium.setText(club.getNameStadium());
+        capacity.setText(club.getCapacityStadium() + "");
+        coach.setText(club.getNameCoach());
+        countPlayers.setText(club.getCountPlayers() + "");
     }
 }

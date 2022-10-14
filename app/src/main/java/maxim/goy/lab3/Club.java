@@ -45,7 +45,9 @@ public class Club {
         tournament.add(str);
     }
 
-    public void deleteTournament(String str) { tournament.remove(str); }
+    public void deleteTournament(String str) {
+        tournament.remove(str);
+    }
 
     //region getters and setters
 
@@ -113,4 +115,10 @@ public class Club {
         this.tournament = tournament;
     }
     //endregion
+
+    public String toStringDate() {
+        return date.get(Calendar.DATE) + "." +
+                date.get(Calendar.MONTH) + "." +
+                date.get(Calendar.YEAR) + ".";
+    }
 }
