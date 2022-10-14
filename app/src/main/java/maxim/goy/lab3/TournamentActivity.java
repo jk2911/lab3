@@ -61,7 +61,7 @@ public class TournamentActivity extends AppCompatActivity implements SavedIntent
 
 
     public void nextPage(View v) {
-        Intent intent = new Intent(this, LoadSaveActivity.class);
+        Intent intent = new Intent(this, UserDataActivity.class);
         saveInfoInIntent(intent);
         startActivity(intent);
     }

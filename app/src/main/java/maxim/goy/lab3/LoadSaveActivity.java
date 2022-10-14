@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -20,14 +21,45 @@ import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
 public class LoadSaveActivity extends AppCompatActivity {
+    TextView name, town, date, stadium, capacity, coach, countPlayers;
     private final String path = "club.json";
     Bundle bundle;
+    Club club;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_save);
         bundle = getIntent().getBundleExtra("club");
+
+        name = findViewById(R.id.name);
+        town = findViewById(R.id.town);
+        date = findViewById(R.id.date);
+        stadium = findViewById(R.id.stadium);
+        capacity = findViewById(R.id.capacity);
+        coach = findViewById(R.id.coach);
+        countPlayers = findViewById(R.id.countPlayers);
+
+        club = new Club(bundle.getString("name", ""),
+                bundle.getString("town", ""),
+                new GregorianCalendar(
+                        bundle.getInt("year", 1900),
+                        bundle.getInt("month", 0),
+                        bundle.getInt("day", 1)
+                ),
+                bundle.getString("coach", ""),
+                bundle.getInt("capacity", 0),
+                bundle.getString("stadium", ""),
+                bundle.getInt("players", 0),
+                bundle.getStringArrayList("tournament"));
+
+        name.setText(club.getName());
+        town.setText(club.getTown());
+        date.setText(club.getDate().toString());
+        stadium.setText(club.getNameStadium());
+        capacity.setText(club.getCapacityStadium());
+        coach.setText(club.getNameCoach());
+        countPlayers.setText(club.getCountPlayers());
     }
 
     @Override
@@ -41,24 +73,6 @@ public class LoadSaveActivity extends AppCompatActivity {
     }
 
     public void save(View v) {
-        String name = bundle.getString("name", "");
-        String town = bundle.getString("town", "");
-        Calendar date = new GregorianCalendar(
-                bundle.getInt("year", 1900),
-                bundle.getInt("month", 0),
-                bundle.getInt("day", 1)
-        );
-        String coach = bundle.getString("coach", "");
-        int capacity = bundle.getInt("capacity", 0);
-
-        String stadium = bundle.getString("stadium", "");
-        int players = bundle.getInt("players", 0);
-
-        ArrayList<String> tournamentsList = bundle.getStringArrayList("tournament");
-        Club club = new Club(
-                name, town, date, coach, capacity, stadium, players
-        );
-        club.setTournament(tournamentsList);
         try {
             FileOutputStream fileOutputStream = openFileOutput(path, MODE_PRIVATE);
             Gson gson = new Gson();
@@ -98,5 +112,9 @@ public class LoadSaveActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TournamentActivity.class);
         intent.putExtra("club", bundle);
         startActivity(intent);
+    }
+
+    public void onMain(View v) {
+        Toast.makeText(this, "hfhfhf", Toast.LENGTH_LONG).show();
     }
 }

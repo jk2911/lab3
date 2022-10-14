@@ -29,6 +29,18 @@ public class Club {
         this.tournament = new ArrayList<>();
     }
 
+    public Club(String name, String town, Calendar date, String nameCoach, int capacityStadium,
+                String nameStadium, int countPlayers, ArrayList<String> tournament) {
+        this.name = name;
+        this.town = town;
+        this.date = date;
+        this.nameCoach = nameCoach;
+        this.capacityStadium = capacityStadium;
+        this.nameStadium = nameStadium;
+        this.countPlayers = countPlayers;
+        this.tournament = tournament;
+    }
+
     public void addTournament(String str) {
         tournament.add(str);
     }
