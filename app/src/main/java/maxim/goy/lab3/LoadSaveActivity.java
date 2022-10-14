@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import java.util.StringTokenizer;
 
 public class LoadSaveActivity extends AppCompatActivity {
     TextView name, town, date, stadium, capacity, coach, countPlayers;
+    LinearLayout tournaments;
     private final String path = "club.json";
     Bundle bundle;
     Club club;
@@ -41,6 +43,7 @@ public class LoadSaveActivity extends AppCompatActivity {
         capacity = findViewById(R.id.capacity);
         coach = findViewById(R.id.coach);
         countPlayers = findViewById(R.id.countPlayers);
+        tournaments = findViewById(R.id.tournaments);
 
         club = new Club(bundle.getString("name", ""),
                 bundle.getString("town", ""),
@@ -138,5 +141,14 @@ public class LoadSaveActivity extends AppCompatActivity {
         capacity.setText(club.getCapacityStadium() + "");
         coach.setText(club.getNameCoach());
         countPlayers.setText(club.getCountPlayers() + "");
+        OutputTournament();
+    }
+
+    public void OutputTournament() {
+        for (String i : club.getTournament()) {
+            TextView textView = new TextView(this);
+            textView.setText(" - " + i);
+            tournaments.addView(textView);
+        }
     }
 }

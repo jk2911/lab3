@@ -117,8 +117,10 @@ public class Club {
     //endregion
 
     public String toStringDate() {
-        return date.get(Calendar.DATE) + "." +
-                date.get(Calendar.MONTH) + "." +
-                date.get(Calendar.YEAR) + ".";
+        int day = date.get(Calendar.DATE);
+        int month = date.get(Calendar.MONTH);
+        return (day > 9 ? day : "0" + day) + "." +
+                (month > 9 ? month : "0" + month) + "." +
+                date.get(Calendar.YEAR);
     }
 }
